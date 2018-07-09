@@ -9,20 +9,39 @@
 import UIKit
 
 class AsteroidViewController: UIViewController {
-
+    
     @IBOutlet weak var asteroidView: AsteroidDropView! {
         didSet {
-            asteroidView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(addAsteroid(recognizer:))))
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.view.backgroundColor = UIColor.black
     }
     
-    @objc func addAsteroid(recognizer: UITapGestureRecognizer) {
-        if recognizer.state == .ended {
-            asteroidView.addAsteroid()
-        }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        asteroidView.animating = true
+        startTimer()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        asteroidView.animating = false
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
+    func startTimer() {
+        Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(addAsteroids), userInfo: nil, repeats: true)
+    }
+    
+    @objc func addAsteroids() {
+        asteroidView.addAsteroid()
     }
 }
