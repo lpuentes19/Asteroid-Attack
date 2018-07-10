@@ -14,17 +14,19 @@ class AsteroidViewController: UIViewController {
     @IBOutlet weak var asteroidView: AsteroidDropView!
     @IBOutlet weak var asteroidSKView: SKView!
     
-    var asteroidScene = AsteroidSKScene()
-    var gameTimer: Timer!
+   lazy var asteroidScene: AsteroidSKScene = {
+        var asteroid = AsteroidSKScene(size: asteroidSKView.bounds.size)
+        return asteroid
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.view.backgroundColor = UIColor.black
         let scene = AsteroidSKScene(size: asteroidSKView.bounds.size)
-        //scene.scaleMode = .aspectFit
+        scene.scaleMode = .aspectFit
         
-        asteroidSKView.presentScene(scene)
+        asteroidSKView.presentScene(asteroidScene)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -44,7 +46,7 @@ class AsteroidViewController: UIViewController {
     }
     
     func startTimer() {
-        gameTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(addAsteroids), userInfo: nil, repeats: true)
+        Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(addAsteroids), userInfo: nil, repeats: true)
     }
     
     @objc func addAsteroids() {

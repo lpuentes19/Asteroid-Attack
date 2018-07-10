@@ -16,7 +16,6 @@ class AsteroidSKScene: SKScene {
 
     override func didMove(to view: SKView) {
         backgroundColor = UIColor.black
-        self.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
     }
     
     @objc func addAsteroids() {
