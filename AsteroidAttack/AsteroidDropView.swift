@@ -53,7 +53,7 @@ class AsteroidDropView: UIView {
         }
     }
     
-    @objc func addAsteroid() {
+    func addAsteroid() {
         var frame = CGRect(origin: CGPoint.zero, size: asteroidSize)
         frame.origin.x = CGFloat.random(max: asteroidsPerRow) * asteroidSize.width
         

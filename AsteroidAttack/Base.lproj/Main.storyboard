@@ -20,7 +20,18 @@
                         <subviews>
                             <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w5h-RU-QJl" customClass="AsteroidDropView" customModule="AsteroidAttack" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="30" width="375" height="637"/>
+                                <subviews>
+                                    <skView contentMode="scaleToFill" sceneName="AsteroidSKView" translatesAutoresizingMaskIntoConstraints="NO" id="7xy-ex-zbq">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="637"/>
+                                    </skView>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="7xy-ex-zbq" firstAttribute="top" secondItem="w5h-RU-QJl" secondAttribute="top" id="5rg-Po-VQB"/>
+                                    <constraint firstItem="7xy-ex-zbq" firstAttribute="leading" secondItem="w5h-RU-QJl" secondAttribute="leading" id="J9q-IV-a3R"/>
+                                    <constraint firstAttribute="trailing" secondItem="7xy-ex-zbq" secondAttribute="trailing" id="TEB-lF-7oW"/>
+                                    <constraint firstAttribute="bottom" secondItem="7xy-ex-zbq" secondAttribute="bottom" id="ec9-vb-9KC"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -33,6 +44,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="asteroidSKView" destination="7xy-ex-zbq" id="X8I-IK-fs1"/>
                         <outlet property="asteroidView" destination="w5h-RU-QJl" id="sR5-I5-PME"/>
                     </connections>
                 </viewController>
